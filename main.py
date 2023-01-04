@@ -60,7 +60,7 @@ while True:
                     flag = 1
                 if bot_choice == 2:
                     print("Bot : ROCK ")
-                    print("DRAW")
+                    print("DRAW  ")
                     flag = 1
             if totalFingers == 5:
                 h, w, c = overlayList[0].shape
@@ -79,7 +79,7 @@ while True:
                     flag = 1
                 if bot_choice == 1:
                     print("Bot : PAPER ")
-                    print("DRAW")
+                    print("DRAW  ")
                     flag = 1
             if totalFingers == 2:
                 h, w, c = overlayList[2].shape
@@ -98,7 +98,7 @@ while True:
                     flag = 1
                 if bot_choice == 3:
                     print("Bot : SCISSORS ")
-                    print("DRAW")
+                    print("DRAW  ")
                     flag = 1
             cTime = time.time()
             fps = 1 / (cTime - pTime)
