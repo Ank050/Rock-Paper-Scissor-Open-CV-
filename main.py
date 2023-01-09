@@ -53,23 +53,23 @@ while True:
                     print("User : ROCK ")
                     if bot_choice == 1:
                         print("Bot : PAPER ")
-                        imagew = cv2.imread('loser.png')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('loser.png')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("You Lost")
                         flag = 1
                     if bot_choice == 3:
                         print("Bot : SCISSORS ")
-                        imagew = cv2.imread('winner.jpg')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('winner.jpg')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("You Won")
                         flag = 1
                     if bot_choice == 2:
                         print("Bot : ROCK ")
-                        imagew = cv2.imread('draw.png')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('draw.png')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("DRAW ")
                         flag = 1
                 if totalFingers == 5:
@@ -81,23 +81,23 @@ while True:
                     print("User : PAPER")
                     if bot_choice == 2:
                         print("Bot : ROCK ")
-                        imagew = cv2.imread('winner.jpg')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('winner.jpg')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("You Won")
                         flag = 1
                     if bot_choice == 3:
                         print("Bot : SCISSORS ")
-                        imagew = cv2.imread('loser.png')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('loser.png')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("You Lost")
                         flag = 1
                     if bot_choice == 1:
                         print("Bot : PAPER ")
-                        imagew = cv2.imread('draw.png')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('draw.png')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("DRAW  ")
                         flag = 1
                 if totalFingers == 2:
@@ -109,23 +109,23 @@ while True:
                     print("User : SCISSORS")
                     if bot_choice == 1:
                         print("Bot : PAPER ")
-                        imagew = cv2.imread('winner.jpg')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('winner.jpg')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("You Won")
                         flag = 1
                     if bot_choice == 2:
                         print("Bot : ROCK ")
-                        imagew = cv2.imread('loser.png')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('loser.png')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("You Lost")
                         flag = 1
                     if bot_choice == 3:
                         print("Bot : SCISSORS ")
-                        imagew = cv2.imread('draw.png')
-                        h, w, c = imagew.shape
-                        img[0:h, 0:w] = imagew
+                        image1 = cv2.imread('draw.png')
+                        h, w, c = image1.shape
+                        img[0:h, 0:w] = image1
                         print("DRAW  ")
                         flag = 1
             cTime = time.time()
