@@ -12,44 +12,42 @@ cap = cv2.VideoCapture(1)
 cap.set(3, wCam)
 cap.set(4, hCam)
 pTime = 0
-tipIds = [4, 8, 12, 16, 20]
+TipsCords = [4, 8, 12, 16, 20]
 
-folderPath = "images"
-myList = os.listdir(folderPath)
-overlayList = []
-for imPath in myList:
-    image = cv2.imread(f'{folderPath}/{imPath}')
-    # print(f'{folderPath}/{imPath}')
-    overlayList.append(image)
+myList = os.listdir(f"images")
+ImgList = []
+for path in myList:
+    image = cv2.imread(f'images/{path}')
+    ImgList.append(image)
 
-detector = htm.handDetector(detectionCon=0.75)
+detector = htm.handDetector(detectionCon=0.65)
 while True:
     if flag == 0:
         success, img = cap.read()
         img = detector.findHands(img)
         lmList = detector.findPosition(img, draw=False)
-
+        cTime = time.time()
+        fps = 1 / (cTime - pTime)
+        pTime = cTime
+        cv2.putText(img, f'FPS: {int(fps)}', (0, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 3)
         if len(lmList) != 0:
-            if cv2.waitKey(20) & 0xFF == ord('p'):
+            if cv2.waitKey(10) & 0xFF == ord('p'):
                 fingers = []
-                if lmList[tipIds[0]][1] > lmList[tipIds[0] - 1][1]:
+                if lmList[TipsCords[0]][1] > lmList[TipsCords[0] - 1][1]:
                     fingers.append(1)
                 else:
                     fingers.append(0)
                 for id in range(1, 5):
-                    if lmList[tipIds[id]][2] < lmList[tipIds[id] - 2][2]:
+                    if lmList[TipsCords[id]][2] < lmList[TipsCords[id] - 2][2]:
                         fingers.append(1)
                     else:
                         fingers.append(0)
-                # print(fingers)
                 totalFingers = fingers.count(1)
-                # print(totalFingers)
                 if totalFingers == 0:
-                    h, w, c = overlayList[1].shape
-                    img[0:h, wCam - w:wCam] = overlayList[1]
+                    h, w, c = ImgList[1].shape
+                    img[0:h, wCam - w:wCam] = ImgList[1]
                     choice = 2
                     bot_choice = randint(1, 3)
-                    # print(bot_choice)
                     print("User : ROCK ")
                     if bot_choice == 1:
                         print("Bot : PAPER ")
@@ -73,11 +71,10 @@ while True:
                         print("DRAW ")
                         flag = 1
                 if totalFingers == 5:
-                    h, w, c = overlayList[0].shape
-                    img[0:h, wCam - w:wCam] = overlayList[0]
+                    h, w, c = ImgList[0].shape
+                    img[0:h, wCam - w:wCam] = ImgList[0]
                     choice = 1
                     bot_choice = randint(1, 3)
-                    # print(bot_choice)
                     print("User : PAPER")
                     if bot_choice == 2:
                         print("Bot : ROCK ")
@@ -101,11 +98,10 @@ while True:
                         print("DRAW  ")
                         flag = 1
                 if totalFingers == 2:
-                    h, w, c = overlayList[2].shape
-                    img[0:h, wCam - w:wCam] = overlayList[2]
+                    h, w, c = ImgList[2].shape
+                    img[0:h, wCam - w:wCam] = ImgList[2]
                     choice = 3
                     bot_choice = randint(1, 3)
-                    # print(bot_choice)
                     print("User : SCISSORS")
                     if bot_choice == 1:
                         print("Bot : PAPER ")
@@ -128,17 +124,12 @@ while True:
                         img[0:h, 0:w] = image1
                         print("DRAW  ")
                         flag = 1
-            cTime = time.time()
-            fps = 1 / (cTime - pTime)
-            pTime = cTime
-            cv2.putText(img, f'FPS: {int(fps)}', (0, 30), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 0), 3)
-
-        elif cv2.waitKey(20) & 0xFF == ord('f'):
+        elif cv2.waitKey(1) & 0xFF == ord('f'):
             cv2.destroyAllWindows()
             break
         else:
             success, img = cap.read()
             img = detector.findHands(img)
             lmList = detector.findPosition(img, draw=False)
-    cv2.imshow("Image", img)
-    cv2.waitKey(5)
+    cv2.imshow("Rock Paper Scissor", img)
+    cv2.waitKey(1)
